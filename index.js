@@ -254,15 +254,15 @@ app.get('/products/sort/price-low-to-high', (req, res) => {
   res.json({ products: sortedProducts });
 });
 //Filter the products based on the “RAM” option
-function filterProductsByRam(productObj, ram) {
-  return productObj.ram === ram;
+function filterProductsByRam(products, ram) {
+  return products.ram === ram;
 }
 app.get('/products/filter/ram', (req, res) => {
   let ram = parseFloat(req.query.ram);
-  let filterByRam = products.filter((productObj) =>
-    filterProductsByRam(productObj, ram)
+  let filterByRam = products.filter((products) =>
+    filterProductsByRam(products, ram)
   );
-  res.json(filterByRam);
+  res.json({products:filterByRam});
 });
 function filterByRom(productObj, rom) {
   return productObj.rom === rom;
