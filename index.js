@@ -270,7 +270,7 @@ function filterByRom(productObj, rom) {
 app.get('/products/filter/rom', (req, res) => {
   let rom = parseFloat(req.query.rom);
   let filterRom = products.filter((productObj) => filterByRom(productObj, rom));
-  res.json(filterRom);
+  res.json({products:filterRom});
 });
 //Filter the products based on the “Brand” option
 function filterByBrand(productObj, brand) {
@@ -281,7 +281,7 @@ app.get('/products/filter/brand', (req, res) => {
   let filterBrand = products.filter((productObj) =>
     filterByBrand(productObj, brand)
   );
-  res.json(filterBrand);
+  res.json({products:filterBrand});
 });
 //Filter the products based on the “OS” option
 function filterByOs(productObj, os) {
@@ -290,7 +290,7 @@ function filterByOs(productObj, os) {
 app.get('/products/filter/os', (req, res) => {
   let os = req.query.os;
   let filterOs = products.filter((producObj) => filterByOs(producObj, os));
-  res.json(filterOs);
+  res.json({products:filterOs});
 });
 //Filter the products based on the “Price” option.
 function filterByPrice(productObj, price) {
@@ -301,10 +301,10 @@ app.get('/products/filter/price', (req, res) => {
   let filterPrice = products.filter((productObj) =>
     filterByPrice(productObj, price)
   );
-  res.json(filterPrice);
+  res.json({products:filterPrice});
 });
 app.get('/products', (req, res) => {
-  res.json(products);
+  res.json({products:products});
 });
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
